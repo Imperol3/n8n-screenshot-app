@@ -48,7 +48,6 @@ export async function POST(request: Request) {
 
   await page.goto("https://n8n.victorkituku.dev/workflow/KvWX0NdQ7rGCf7LR", {
     waitUntil: "networkidle2",
-    timeout: 10000,
   });
   console.log("workflow page");
   const pageTitle = await page.content();
