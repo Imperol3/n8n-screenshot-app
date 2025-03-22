@@ -1,8 +1,6 @@
-import chromium from "@sparticuz/chromium-min";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 
 // Optional: If you'd like to disable webgl, true is the default.
-chromium.setGraphicsMode = false;
 
 export async function POST(request: Request) {
   try {
@@ -19,23 +17,11 @@ export async function POST(request: Request) {
       );
     }
     // Optional: Load any fonts you need. Open Sans is included by default in AWS Lambda instances
-    await chromium.font(
-      "https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf"
-    );
-
-    const isLocal = process.env.CHROME_EXECUTABLE_PATH;
 
     const browser = await puppeteer.launch({
-      args: isLocal
-        ? puppeteer.defaultArgs()
-        : [...chromium.args, "--hide-scrollbars", "--incognito"],
-      defaultViewport: chromium.defaultViewport,
-      executablePath:
-        process.env.CHROME_EXECUTABLE_PATH ||
-        (await chromium.executablePath(
-          "https://my-chromium-bucket-victor.s3.eu-north-1.amazonaws.com/chromium-v133.0.0-pack.tar"
-        )),
-      headless: chromium.headless,
+      args: ["--hide-scrollbars", "--incognito"],
+
+      headless: true,
     });
     console.log("enter");
     const page = await browser.newPage();
