@@ -2,8 +2,9 @@
 import { useState } from "react";
 
 export default function Home() {
- // const [screenshot, setScreenshot] = useState<string | null>(null);
- // const [loading, setLoading] = useState(false);
+ const [result, setResults] = useState<object | null>(null);
+ const [screenshot, setScreenshot] = useState<string | null>(null);
+ const [loading, setLoading] = useState(false);
 
   async function fetchScreenshot() {
     setLoading(true);
