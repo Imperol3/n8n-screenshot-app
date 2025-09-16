@@ -18,10 +18,14 @@ export async function POST(request: Request) {
     }
     // Optional: Load any fonts you need. Open Sans is included by default in AWS Lambda instances
 
-    const browser = await puppeteer.launch({
-      args: ["--hide-scrollbars", "--incognito"],
-
-      headless: true,
+   const browser = await puppeteer.launch({
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--hide-scrollbars",
+    "--incognito",
+  ],
+    headless: true,
     });
     console.log("enter");
     const page = await browser.newPage();
