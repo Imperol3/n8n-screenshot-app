@@ -25,6 +25,7 @@ export async function POST(request: Request) {
     "--hide-scrollbars",
     "--incognito",
   ],
+    ignoreHTTPSErrors: true,
     headless: true,
     });
     console.log("enter");
