@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [result, setResults] = useState<object | null>(null);
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
